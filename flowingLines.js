@@ -1,6 +1,41 @@
 // upper lines
 let x = 0;
 let y = 0;
+
+let lines = [];
+
+let colours = ["#FF007F", "#ABFF4F", "#004FFF"];
+
+function randomRectangle() {
+  noStroke();
+  fill(colours[Math.floor(Math.random() * colours.length)]);
+  rect(xd, 650, Math.random() * (200 - 50) + 50, 20, 10);
+}
+
+let firstRun = true;
+let pomocna = 0;
+
+function draw() {
+  clear();
+  // randomRectangle();
+
+  if (pomocna % 150 === 0 || firstRun) {
+    firstRun = false;
+
+    // vytvor novou caru
+    // - nahodna delka
+    // - nahodna barva
+    // let cara <- objekt
+    // pridame to lines
+    //
+  }
+
+  // for - prochazi lines array
+  // na kazde lines zavola vykresli(x)
+
+  x = x + 5;
+}
+
 // fill(255, 0, 127);
 // rect(x + 0, y + 600, 50, 20, 10);
 
