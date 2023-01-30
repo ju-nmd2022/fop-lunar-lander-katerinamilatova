@@ -11,7 +11,7 @@ function blueLine(x, y) {
   push();
   fill(0, 79, 255);
   noStroke();
-  rect(x - 175, y - 10, 350, 20, 10);
+  rect(x - 195, y - 10, 360, 20, 10);
   pop();
 }
 
@@ -27,11 +27,11 @@ function drawObstacleOne(x, y) {
   rotatePinkLine = rotatePinkLine + 0.05;
 
   push();
-  translate(x + 525, y + 300);
+  translate(x + 515, y + 300);
   rotate(rotateBlueLine);
   blueLine(0, 0);
   pop();
-  rotateBlueLine = rotateBlueLine - 0.075;
+  rotateBlueLine = rotateBlueLine - 0.085;
 }
 
 drawObstacleOne(0, 0);
