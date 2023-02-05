@@ -6,36 +6,42 @@ let lines = [];
 
 let colours = ["#FF007F", "#ABFF4F", "#004FFF"];
 
-let movingLines = 0;
+let movingLinesX = 0;
 
 function randomRectangle() {
   noStroke();
   fill(colours[Math.floor(Math.random() * colours.length)]);
-  rect(movingLines, 650, Math.random() * (200 - 50) + 50, 20, 10);
+  rect(movingLinesX, 650, Math.random() * (200 - 50) + 50, 20, 10);
 }
 
 // let firstRun = true;
-// let pomocna = 0;
+// // let pomocna = 0;
 
-function draw() {
-  clear();
-  randomRectangle();
+// function draw() {
+//   clear();
 
-  // if (randomRectangle ); //1. pokud je na souřadnicích x0-150, y650 a RandomRectangle, přestaň tvořit
+//   if (movingLinesX === 150 || firstRun) {
+//     randomRectangle();
+//     firstRun = false;
+//   }
 
-  // 2. pokud jsou tyto souřadnice volné, vytvoř randomRectangle
-  //3. movingLines = movingLines + 1;
+//   movingLinesX = movingLinesX + 1;
+// }
 
-  // if (pomocna % 150 === 0 || firstRun) {
-  //   firstRun = false;
+// }; //1. pokud je na souřadnicích x0-150, y650 a RandomRectangle, přestaň tvořit
 
-  // vytvor novou caru
-  // - nahodna delka
-  // - nahodna barva
-  // let cara <- objekt
-  // pridame to lines
-  //
-}
+// 2. pokud jsou tyto souřadnice volné, vytvoř randomRectangle
+//3.  = movingLinesmovingLinesXX + 1;
+
+// if (pomocna % 150 === 0 || firstRun) {
+//   firstRun = false;
+
+// vytvor novou caru
+// - nahodna delka
+// - nahodna barva
+// let cara <- objekt
+// pridame to lines
+//
 
 // for - prochazi lines array
 // na kazde lines zavola vykresli(x)

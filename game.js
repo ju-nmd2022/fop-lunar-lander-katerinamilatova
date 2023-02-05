@@ -1,34 +1,65 @@
-// import { ufo } from "ufo.js";
-// import { drawObstacleOne } from "obstacleOne";
+import { Ufo } from "ufo.js";
+import { Cow } from "cow.js";
+import { ObstacleOne } from "obstacleOne.js";
 
-function setUp() {
-  createCanvas(1000, 800);
-  backgroundcolor(0, 0, 0);
-}
+export class Game {
+  // in constructor can be only the things that will change - not ufo (ufo will be in every game the same)
+  constructor(playerName) {
+    this.playerName = playerName;
+    this.ufo = new Ufo();
+    this.cowList = [];
+    this.obstacleOneList = [];
 
-let ufoY = 10;
-let velocity = 8;
-let acceleration = 0.2;
-let isGameActive = true;
+    // set up constants
+    this.ufoY = 10;
+    this.velocity = 8;
+    this.acceleration = 0.2;
 
-// Lines which make ufo go up on click and move it were adapted from flappy ufo game created in the lesson
-function draw() {
-  clear();
-  drawObstacleOne(180, 0);
-  ufo(465, ufoY);
-
-  if (isGameActive) {
-    ufoY = ufoY + velocity;
-    velocity = velocity + acceleration;
+    this.addCow();
+    this.addObstacleOne();
   }
 
-  if (mouseIsPressed) {
-    velocity = velocity - 0.8;
+  /*
+    Returns true if the game is allowed to continue or false when the game should be ended - it is the responsibility
+    of the draw function in run.js to return from the function and end the game
+  */
+  run() {
+    this.velocity = this.velocity + this.acceleration;
 
-    ufoFlyUp(465, ufoY);
+    for (let i = 0; i < this.cowList.length; i++) {
+      this.cowList[i].cowDrawing();
+    }
+
+    for (let i = 0; i < this.obstacleOneList.length; i++) {
+      this.obstacleOneList[i].draw();
+    }
+
+    // setting up ufo
+    this.ufo.ufoDrawing(this.velocity);
+    this.ufoY = this.ufoY + this.velocity;
+
+    if (mouseIsPressed) {
+      this.velocity = this.velocity - 0.8;
+      this.ufo.ufoFlyUpDrawing();
+    }
+
+    // contidions to end the game
+    if (this.ufoY <= 0) {
+      print("Game is over. " + this.playerName + " lost");
+      return false;
+    }
+
+    return true;
   }
 
-  if (isGameActive == false || ufoY <= 0) {
-    print("Game is over.");
+  addCow() {
+    print("Creating cow");
+    let newCow = new Cow();
+    this.cowList.push(newCow);
+  }
+
+  addObstacleOne() {
+    let newObstacleOne = new ObstacleOne();
+    this.obstacleOneList.push(newObstacleOne);
   }
 }

@@ -1,45 +1,69 @@
-function ufo(x, y) {
-  push();
-  scale(0.7);
-  // ufo
-  stroke(192, 192, 192);
-  fill(171, 255, 79);
-  ellipse(x + 250, y + 120, 70, 25);
+class Ufo {
+  constructor() {
+    this.x = 465;
+    this.y = 50;
+  }
 
-  fill(255, 255, 255);
-  beginShape();
-  vertex(x + 230, y + 110);
-  bezierVertex(x + 230, y + 80, x + 270, y + 80, x + 270, y + 110);
-  bezierVertex(x + 270, y + 120, x + 230, y + 120, x + 230, y + 110);
-  endShape();
+  ufoDrawing(velocity) {
+    // this.y = this.y + ufoY;
+    this.y += velocity;
+    push();
+    // scale(0.7);
+    // ufo
+    stroke(192, 192, 192);
+    noStroke();
+    fill(171, 255, 79);
+    ellipse(this.x + 250, this.y + 120, 70, 25);
 
-  strokeWeight(1);
-  stroke(255, 255, 255);
-  line(x + 250, y + 90, x + 250, y + 80);
+    fill(255, 255, 255);
+    beginShape();
+    vertex(this.x + 230, this.y + 110);
+    bezierVertex(
+      this.x + 230,
+      this.y + 80,
+      this.x + 270,
+      this.y + 80,
+      this.x + 270,
+      this.y + 110
+    );
+    bezierVertex(
+      this.x + 270,
+      this.y + 120,
+      this.x + 230,
+      this.y + 120,
+      this.x + 230,
+      this.y + 110
+    );
+    endShape();
 
-  // anthene
-  fill(0, 255, 255);
-  ellipse(x + 250, y + 80, 5, 5);
+    strokeWeight(1);
+    stroke(255, 255, 255);
+    line(this.x + 250, this.y + 90, this.x + 250, this.y + 80);
 
-  // window
-  fill(255, 255, 0);
-  stroke(192, 192, 192);
-  ellipse(x + 250, y + 103, 17, 14);
-  pop();
-}
-ufo(0, 0);
+    // anthene
+    fill(0, 255, 255);
+    ellipse(this.x + 250, this.y + 80, 5, 5);
 
-// if you press, this is how it changes
-function ufoFlyUp(x, y) {
-  push();
-  scale(0.7);
-  fill(171, 255, 79);
-  stroke(192, 192, 192);
-  strokeWeight(1.5);
-  ellipse(x + 250, y + 103, 17, 14);
+    // window
+    fill(255, 255, 0);
+    stroke(192, 192, 192);
+    ellipse(this.x + 250, this.y + 103, 17, 14);
+    pop();
+  }
 
-  line(x + 220, y + 140, x + 222, y + 150);
-  line(x + 280, y + 140, x + 278, y + 150);
-  line(x + 250, y + 145, x + 250, y + 160);
-  pop();
+  // if you press the mouse, this is how it changes
+  ufoFlyUpDrawing(velocity) {
+    this.y -= 8;
+    push();
+    // scale(0.7);
+    fill(171, 255, 79);
+    stroke(192, 192, 192);
+    strokeWeight(1.5);
+    ellipse(this.x + 250, this.y + 103, 17, 14);
+
+    line(this.x + 220, this.y + 140, this.x + 222, this.y + 150);
+    line(this.x + 280, this.y + 140, this.x + 278, this.y + 150);
+    line(this.x + 250, this.y + 145, this.x + 250, this.y + 160);
+    pop();
+  }
 }

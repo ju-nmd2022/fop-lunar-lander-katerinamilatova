@@ -1,40 +1,50 @@
-// scenery
-function pinkLine(x, y) {
-  push();
-  fill(255, 0, 127);
-  noStroke();
-  rect(x - 100, y - 10, 200, 20, 10);
-  pop();
+function setUp() {
+  createCanvas(1000, 600);
+  background(0, 0, 0);
 }
 
-function blueLine(x, y) {
-  push();
-  fill(0, 79, 255);
-  noStroke();
-  rect(x - 195, y - 10, 360, 20, 10);
-  pop();
+export class ObstacleOne {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+  }
+
+  draw(velocity) {
+    // this.y -= velocity;
+
+    //pink line
+    push();
+    fill(255, 0, 127);
+    noStroke();
+    rect(this.x - 100, this.y - 10, 200, 20, 10);
+    pop();
+
+    // blue line
+    push();
+    fill(0, 79, 255);
+    noStroke();
+    rect(this.x - 195, this.y - 10, 360, 20, 10);
+    pop();
+
+    //moving the lines
+    let rotatePinkLine = 0;
+    let rotateBlueLine = 0;
+
+    push();
+    translate(this.x + 200, this.y + 300);
+    rotate(rotatePinkLine);
+    pinkLine(0, 0);
+    pop();
+    rotatePinkLine = rotatePinkLine + 0.05;
+
+    push();
+    translate(this.x + 515, this.y + 300);
+    rotate(rotateBlueLine);
+    blueLine(0, 0);
+    pop();
+    rotateBlueLine = rotateBlueLine - 0.085;
+  }
 }
-
-let rotatePinkLine = 0;
-let rotateBlueLine = 0;
-
-function drawObstacleOne(x, y) {
-  push();
-  translate(x + 200, y + 300);
-  rotate(rotatePinkLine);
-  pinkLine(0, 0);
-  pop();
-  rotatePinkLine = rotatePinkLine + 0.05;
-
-  push();
-  translate(x + 515, y + 300);
-  rotate(rotateBlueLine);
-  blueLine(0, 0);
-  pop();
-  rotateBlueLine = rotateBlueLine - 0.085;
-}
-
-drawObstacleOne(0, 0);
 
 // function draw() {
 //   // Obstacle 1: moving the pink line
