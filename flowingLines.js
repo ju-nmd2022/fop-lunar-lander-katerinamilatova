@@ -1,18 +1,28 @@
-// upper lines
-let x = 0;
-let y = 0;
+export class FlowingLine {
+  constructor(x, y, width, velocity) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.color = ["#FF007F", "#ABFF4F", "#004FFF"];
+    this.velocity = velocity;
+  }
 
-let lines = [];
-
-let colours = ["#FF007F", "#ABFF4F", "#004FFF"];
-
-let movingLinesX = 0;
-
-function randomRectangle() {
-  noStroke();
-  fill(colours[Math.floor(Math.random() * colours.length)]);
-  rect(movingLinesX, 650, Math.random() * (200 - 50) + 50, 20, 10);
+  draw(velocity) {
+    // upper lines
+    this.x = 0;
+    this.y = 0;
+    let movingLinesX = 0;
+  }
+  randomRectangle() {
+    noStroke();
+    fill(this.color[Math.floor(Math.random() * this.color.length)]);
+    rect(movingLinesX, 650, Math.random() * (200 - 50) + 50, 20, 10);
+  }
 }
+
+// let lines = [];
+
+// randomRectangle();
 
 // let firstRun = true;
 // // let pomocna = 0;

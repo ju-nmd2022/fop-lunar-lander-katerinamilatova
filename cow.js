@@ -20,21 +20,21 @@ let numberOfCow = 0;
 
 // Class of cows
 export class Cow {
-  constructor() {
+  constructor(x, y) {
     let randomName = names[Math.floor(Math.random() * 9)];
     this.name = randomName;
     this.number = numberOfCow += 1;
     this.points = 1;
     this.phrase = "You earned " + randomName + "!";
-    this.x = 0;
-    this.y = 0;
+    this.x = 1300;
+    this.y = 400;
   }
 
   cowDrawing(velocity) {
     // this.y -= velocity;
 
     push();
-    scale(0.5);
+    scale(0.25);
     // legs
     rect(this.x + 220, this.y + 290, 15, 70, 5);
     rect(this.x + 240, this.y + 290, 15, 70, 5);

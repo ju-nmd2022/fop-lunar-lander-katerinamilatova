@@ -1,6 +1,8 @@
-import { Ufo } from "ufo.js";
 import { Cow } from "cow.js";
 import { ObstacleOne } from "obstacleOne.js";
+import { FlowingLine } from "./flowingLines";
+import { Ufo } from "./ufo";
+import { CowHolder } from "./earnCowAnimation";
 
 export class Game {
   // in constructor can be only the things that will change - not ufo (ufo will be in every game the same)
@@ -9,6 +11,8 @@ export class Game {
     this.ufo = new Ufo();
     this.cowList = [];
     this.obstacleOneList = [];
+    // this.flowingLinesList = [];
+    this.cowHolderList = [];
 
     // set up constants
     this.ufoY = 10;
@@ -17,6 +21,8 @@ export class Game {
 
     this.addCow();
     this.addObstacleOne();
+    // this.addFlowingLine();
+    this.addCowHolder();
   }
 
   /*
@@ -30,9 +36,17 @@ export class Game {
       this.cowList[i].cowDrawing();
     }
 
+    for (let i = 0; i < this.cowHolderList.length; i++) {
+      this.cowHolderList[i].draw();
+    }
+
     for (let i = 0; i < this.obstacleOneList.length; i++) {
       this.obstacleOneList[i].draw();
     }
+
+    // for (let i = 0; i < this.flowingLinesList.length; i++) {
+    //   this.flowingLinesList[i].draw();
+    // }
 
     // setting up ufo
     this.ufo.ufoDrawing(this.velocity);
@@ -44,7 +58,7 @@ export class Game {
     }
 
     // contidions to end the game
-    if (this.ufoY <= 0) {
+    if (this.ufoY <= 0 && this.ufoY > 750) {
       print("Game is over. " + this.playerName + " lost");
       return false;
     }
@@ -58,8 +72,19 @@ export class Game {
     this.cowList.push(newCow);
   }
 
+  addCowHolder() {
+    let newCowHolder = new CowHolder(200, 200, 200, 200);
+    this.cowHolderList.push(newCowHolder);
+  }
+
   addObstacleOne() {
+    print("Creating obstacle");
     let newObstacleOne = new ObstacleOne();
     this.obstacleOneList.push(newObstacleOne);
   }
+
+  // addFlowingLine() {
+  //   let newFlowingLine = new FlowingLine();
+  //   this.flowingLinesList.push(newFlowingLine);
+  // }
 }

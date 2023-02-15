@@ -1,14 +1,15 @@
-class Ufo {
+export class Ufo {
   constructor() {
-    this.x = 465;
+    this.x = 320;
     this.y = 50;
   }
 
   ufoDrawing(velocity) {
     // this.y = this.y + ufoY;
     this.y += velocity;
+    print(this.y);
     push();
-    // scale(0.7);
+    scale(0.7);
     // ufo
     stroke(192, 192, 192);
     noStroke();
@@ -55,7 +56,7 @@ class Ufo {
   ufoFlyUpDrawing(velocity) {
     this.y -= 8;
     push();
-    // scale(0.7);
+    scale(0.7);
     fill(171, 255, 79);
     stroke(192, 192, 192);
     strokeWeight(1.5);
