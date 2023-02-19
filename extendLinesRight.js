@@ -10,7 +10,7 @@ export class ExtendLinesRight {
     this.allowExtend = true;
   }
 
-  Draw(velocity) {
+  draw(velocity) {
     this.y -= velocity;
     push();
     fill(this.color);

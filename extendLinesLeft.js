@@ -7,7 +7,7 @@ export class ExtendLinesLeft {
     this.permitExtend = true;
   }
 
-  Draw(velocity) {
+  draw(velocity) {
     //making it move up
     this.y -= velocity;
 

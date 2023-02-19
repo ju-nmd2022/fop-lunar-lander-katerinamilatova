@@ -5,7 +5,7 @@ export class Ufo {
     this.scaleFactor = scaleFactor;
   }
 
-  Draw(currentY) {
+  draw(currentY) {
     //this is how the ufo remembers its Y position
     this.y = currentY;
 
@@ -99,6 +99,6 @@ let ufo = new Ufo();
 
 function draw() {
   clear();
-  ufo.Draw(0);
+  ufo.draw(0);
   ufo.FlyUp();
 }

@@ -1,9 +1,9 @@
-import { Cow } from "cow.js";
 import { Ufo } from "./ufo";
-import { CowHolder } from "./earnCowAnimation";
+import { CowHolder } from "./cowHolder";
 import { ExtendLinesRight } from "./extendLinesRight";
 import { ExtendLinesLeft } from "./extendLinesLeft";
 import { ObstacleOne } from "./obstacleOne";
+import { Cow } from "./cow";
 
 export class Game {
   // in constructor can be only the things that will change - not ufo (ufo will be in every game the same)
@@ -16,21 +16,24 @@ export class Game {
 
     this.playerName = playerName;
     this.ufo = new Ufo(0.8);
-    this.cowList = [];
-    this.cowHolderList = [];
-    this.obstacleList = [];
+    this.gameObjects = [];
     this.setUp();
-
-    this.addCow();
-    this.addCowHolder();
   }
 
   setUp() {
     let extendLineRight = new ExtendLinesRight(100, 600, "#004FFF");
     let extendLineLeft = new ExtendLinesLeft(500, 600, "#004FFF");
-    let obstacleOne = new ObstacleOne(200, 800);
+    let obstacleOne = new ObstacleOne(200, 900);
+    let cow = new Cow(380, 400);
+    let cowHolder = new CowHolder(50, 490, 50, 490);
 
-    this.obstacleList.push(extendLineRight, extendLineLeft, obstacleOne);
+    this.gameObjects.push(
+      extendLineRight,
+      extendLineLeft,
+      obstacleOne,
+      cow,
+      cowHolder
+    );
   }
 
   /*
@@ -46,26 +49,18 @@ export class Game {
     }
 
     // draw ufo and move it
-    this.ufo.Draw(this.ufoY);
+    this.ufo.draw(this.ufoY);
     this.ufoY = this.ufoY + this.velocity;
 
-    for (let i = 0; i < this.obstacleList.length; i++) {
+    for (let i = 0; i < this.gameObjects.length; i++) {
       /* OCITOVAT
       this is just safety check that the object has a defined method draw
       I am going through all children in a class and I am telling them to do HW 
       which is specified in the work book (everyone knows what to do - this is the method Draw) - 
       this is how I am telling all my objects to be drawn */
-      if (typeof this.obstacleList[i].Draw == "function") {
-        this.obstacleList[i].Draw(this.obstacleVelocity);
+      if (typeof this.gameObjects[i].draw == "function") {
+        this.gameObjects[i].draw(this.obstacleVelocity);
       }
-    }
-
-    for (let i = 0; i < this.cowList.length; i++) {
-      this.cowList[i].draw();
-    }
-
-    for (let i = 0; i < this.cowHolderList.length; i++) {
-      this.cowHolderList[i].draw();
     }
 
     // contidions to end the game
@@ -76,16 +71,5 @@ export class Game {
     }
 
     return true;
-  }
-
-  addCow() {
-    print("Creating cow");
-    let newCow = new Cow();
-    this.cowList.push(newCow);
-  }
-
-  addCowHolder() {
-    let newCowHolder = new CowHolder(200, 200, 200, 200);
-    this.cowHolderList.push(newCowHolder);
   }
 }

@@ -28,7 +28,7 @@ export class ObstacleOne {
     pop();
   }
 
-  Draw(velocity) {
+  draw(velocity) {
     //moving the lines
     this.y -= velocity;
 
