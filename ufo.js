@@ -5,10 +5,9 @@ export class Ufo {
     this.scaleFactor = scaleFactor;
   }
 
-  ufoDrawing(ufoY) {
+  Draw(currentY) {
     //this is how the ufo remembers its Y position
-    this.y = ufoY;
-    // print(this.y);
+    this.y = currentY;
 
     push();
     translate(this.x, this.y);
@@ -64,7 +63,7 @@ export class Ufo {
   }
 
   // if you press the mouse, this is how it changes
-  ufoFlyUpDrawing() {
+  FlyUp() {
     push();
     translate(this.x, this.y);
     scale(this.scaleFactor);
@@ -100,6 +99,6 @@ let ufo = new Ufo();
 
 function draw() {
   clear();
-  ufo.ufoDrawing(0);
-  ufo.ufoFlyUpDrawing();
+  ufo.Draw(0);
+  ufo.FlyUp();
 }

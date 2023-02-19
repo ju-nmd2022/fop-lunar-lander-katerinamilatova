@@ -4,9 +4,11 @@ function setUp() {
 }
 
 export class ObstacleOne {
-  constructor() {
-    this.x = 420;
-    this.y = 200;
+  constructor(x, y) {
+    this.x = x; //previously 420
+    this.y = y;
+    this.rotatePinkLine = 0;
+    this.rotateBlueLine = 0;
   }
 
   pinkLine() {
@@ -14,7 +16,7 @@ export class ObstacleOne {
     push();
     fill(255, 0, 127);
     noStroke();
-    rect(this.x - 100, this.y - 10, 200, 20, 10);
+    rect(-100, -10, 200, 20, 10);
     pop();
   }
   blueLine() {
@@ -22,30 +24,33 @@ export class ObstacleOne {
     push();
     fill(0, 79, 255);
     noStroke();
-    rect(this.x - 195, this.y - 10, 360, 20, 10);
+    rect(-180, -10, 360, 20, 10);
     pop();
   }
 
-  draw(velocity) {
-    // this.y -= velocity;
-
+  Draw(velocity) {
     //moving the lines
-    let rotatePinkLine = 0;
-    let rotateBlueLine = 0;
+    this.y -= velocity;
 
+    //come to the screen again and again
+    if (this.y <= -300) {
+      this.y = 900;
+    }
+
+    // translate(this.x, this.y);
     push();
     translate(this.x + 200, this.y + 300);
-    rotate(rotatePinkLine);
-    this.pinkLine(0, 0);
+    rotate(this.rotatePinkLine);
+    this.pinkLine();
     pop();
-    rotatePinkLine = rotatePinkLine + 0.05;
+    this.rotatePinkLine += 0.05;
 
     push();
     translate(this.x + 515, this.y + 300);
-    rotate(rotateBlueLine);
-    this.blueLine(0, 0);
+    rotate(this.rotateBlueLine);
+    this.blueLine();
     pop();
-    rotateBlueLine = rotateBlueLine - 0.085;
+    this.rotateBlueLine -= 0.085;
   }
 }
 
