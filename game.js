@@ -8,14 +8,14 @@ export class Game {
   // in constructor can be only the things that will change - not ufo (ufo will be in every game the same)
   constructor(playerName) {
     this.playerName = playerName;
-    this.ufo = new Ufo();
+    this.ufo = new Ufo(0.8);
     this.cowList = [];
     this.obstacleOneList = [];
     // this.flowingLinesList = [];
     this.cowHolderList = [];
 
     // set up constants
-    this.ufoY = 10;
+    this.ufoY = 0;
     this.velocity = 8;
     this.acceleration = 0.2;
 
@@ -30,10 +30,19 @@ export class Game {
     of the draw function in run.js to return from the function and end the game
   */
   run() {
+    // draw ufo
+
+    this.ufo.ufoDrawing(this.ufoY);
+
+    this.ufoY = this.ufoY + this.velocity;
     this.velocity = this.velocity + this.acceleration;
+    if (mouseIsPressed) {
+      this.velocity = this.velocity - 0.8;
+      this.ufo.ufoFlyUpDrawing();
+    }
 
     for (let i = 0; i < this.cowList.length; i++) {
-      this.cowList[i].cowDrawing();
+      this.cowList[i].draw();
     }
 
     for (let i = 0; i < this.cowHolderList.length; i++) {
@@ -48,17 +57,9 @@ export class Game {
     //   this.flowingLinesList[i].draw();
     // }
 
-    // setting up ufo
-    this.ufo.ufoDrawing(this.velocity);
-    this.ufoY = this.ufoY + this.velocity;
-
-    if (mouseIsPressed) {
-      this.velocity = this.velocity - 0.8;
-      this.ufo.ufoFlyUpDrawing();
-    }
-
     // contidions to end the game
-    if (this.ufoY <= 0 && this.ufoY > 750) {
+    if (this.ufoY <= -100 || this.ufoY >= 700) {
+      print(this.ufoY);
       print("Game is over. " + this.playerName + " lost");
       return false;
     }

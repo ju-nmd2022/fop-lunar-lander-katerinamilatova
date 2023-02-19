@@ -1,7 +1,7 @@
 createCanvas(800, 800);
 background(0, 0, 0);
 
-class ExtendLinesRight {
+export class ExtendLinesRight {
   constructor(x, y, color) {
     this.x = x;
     this.y = y;
@@ -30,7 +30,7 @@ class ExtendLinesRight {
   }
 }
 
-class ExtendLinesLeft {
+export class ExtendLinesLeft {
   constructor(x, y, color) {
     this.x = x;
     this.y = y;

@@ -1,11 +1,15 @@
 import { Ufo } from "./ufo";
 import { Cow } from "./cow";
-
-createCanvas(800, 800);
-background(0, 0, 0);
+function setup() {
+  createCanvas(800, 800);
+}
 
 let colors = ["#FF007F", "#ABFF4F", "#004FFF"];
 let randomLength = Math.random() * (149 - 50) + 50; //změnila jsem z 200, na 150
+
+function draw() {
+  background(0, 0, 0);
+}
 
 // function leftRectangle1(x, y) {
 //   fill(255, 255, 255);
@@ -61,11 +65,11 @@ let randomLength = Math.random() * (149 - 50) + 50; //změnila jsem z 200, na 15
 
 // draw();
 
-let firstScreenUfo = new Ufo();
+let firstScreenUfo = new Ufo(0.8);
 firstScreenUfo.ufoDrawing(0);
 
 let firstScreenCow = new Cow(520, 90);
-firstScreenCow.cowDrawing(0);
+firstScreenCow.draw(0);
 
 textFont("Futura");
 fill(255, 255, 255);

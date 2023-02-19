@@ -1,70 +1,105 @@
 export class Ufo {
-  constructor() {
-    this.x = 320;
-    this.y = 50;
+  constructor(scaleFactor) {
+    this.x = 0;
+    this.y = 0;
+    this.scaleFactor = scaleFactor;
   }
 
-  ufoDrawing(velocity) {
-    // this.y = this.y + ufoY;
-    this.y += velocity;
-    print(this.y);
+  ufoDrawing(ufoY) {
+    //this is how the ufo remembers its Y position
+    this.y = ufoY;
+    // print(this.y);
+
     push();
-    scale(0.7);
+    translate(this.x, this.y);
+    scale(this.scaleFactor);
+
     // ufo
     stroke(192, 192, 192);
     noStroke();
     fill(171, 255, 79);
-    ellipse(this.x + 250, this.y + 120, 70, 25);
+    ellipse(250 / this.scaleFactor, 120 / this.scaleFactor, 70, 25);
 
     fill(255, 255, 255);
     beginShape();
-    vertex(this.x + 230, this.y + 110);
+    vertex(235 / this.scaleFactor, 110 / this.scaleFactor);
     bezierVertex(
-      this.x + 230,
-      this.y + 80,
-      this.x + 270,
-      this.y + 80,
-      this.x + 270,
-      this.y + 110
+      235 / this.scaleFactor,
+      90 / this.scaleFactor,
+      265 / this.scaleFactor,
+      90 / this.scaleFactor,
+      265 / this.scaleFactor,
+      110 / this.scaleFactor
     );
     bezierVertex(
-      this.x + 270,
-      this.y + 120,
-      this.x + 230,
-      this.y + 120,
-      this.x + 230,
-      this.y + 110
+      265 / this.scaleFactor,
+      120 / this.scaleFactor,
+      235 / this.scaleFactor,
+      120 / this.scaleFactor,
+      235 / this.scaleFactor,
+      110 / this.scaleFactor
     );
     endShape();
 
     strokeWeight(1);
     stroke(255, 255, 255);
-    line(this.x + 250, this.y + 90, this.x + 250, this.y + 80);
+    line(
+      250 / this.scaleFactor,
+      95 / this.scaleFactor,
+      250 / this.scaleFactor,
+      85 / this.scaleFactor
+    );
 
     // anthene
     fill(0, 255, 255);
-    ellipse(this.x + 250, this.y + 80, 5, 5);
+    ellipse(250 / this.scaleFactor, 85 / this.scaleFactor, 5, 5);
 
     // window
     fill(255, 255, 0);
     stroke(192, 192, 192);
-    ellipse(this.x + 250, this.y + 103, 17, 14);
+    ellipse(250 / this.scaleFactor, 106 / this.scaleFactor, 15, 12);
     pop();
+
+    return this.y;
   }
 
   // if you press the mouse, this is how it changes
-  ufoFlyUpDrawing(velocity) {
-    this.y -= 8;
+  ufoFlyUpDrawing() {
     push();
-    scale(0.7);
+    translate(this.x, this.y);
+    scale(this.scaleFactor);
+    // scale(0.7);
     fill(171, 255, 79);
     stroke(192, 192, 192);
     strokeWeight(1.5);
-    ellipse(this.x + 250, this.y + 103, 17, 14);
+    ellipse(250 / this.scaleFactor, 106 / this.scaleFactor, 15, 12);
 
-    line(this.x + 220, this.y + 140, this.x + 222, this.y + 150);
-    line(this.x + 280, this.y + 140, this.x + 278, this.y + 150);
-    line(this.x + 250, this.y + 145, this.x + 250, this.y + 160);
+    line(
+      225 / this.scaleFactor,
+      135 / this.scaleFactor,
+      227 / this.scaleFactor,
+      145 / this.scaleFactor
+    );
+    line(
+      275 / this.scaleFactor,
+      135 / this.scaleFactor,
+      273 / this.scaleFactor,
+      145 / this.scaleFactor
+    );
+    line(
+      250 / this.scaleFactor,
+      140 / this.scaleFactor,
+      250 / this.scaleFactor,
+      155 / this.scaleFactor
+    );
     pop();
   }
+}
+
+let ufo = new Ufo();
+
+function draw() {
+  clear();
+  ufo.ufoDrawing(0);
+  ufo.ufoFlyUpDrawing();
 }

@@ -1,7 +1,7 @@
 import { Game } from "./game";
 
 function setUp() {
-  createCanvas(1000, 800);
+  createCanvas(800, 800);
   backgroundcolor(0, 0, 0);
 }
 

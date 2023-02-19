@@ -1,4 +1,5 @@
 import { Cow } from "./cow";
+
 createCanvas(800, 800);
 background(0, 0, 0);
 textAlign(CENTER);
@@ -15,7 +16,7 @@ function cow(x, y) {
   push();
   scale(0.3);
   let firstScreenCow = new Cow(x, y);
-  firstScreenCow.cowDrawing(0);
+  firstScreenCow.draw(0);
   pop();
 }
 

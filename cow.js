@@ -1,6 +1,6 @@
-function setUp() {
-  createCanvas(600, 600);
-  backgroundcolor(0, 0, 0);
+function setup() {
+  createCanvas(800, 800);
+  background(0, 0, 0);
 }
 
 // Random names for the cows
@@ -30,7 +30,7 @@ export class Cow {
     this.y = 400;
   }
 
-  cowDrawing(velocity) {
+  draw(velocity) {
     // this.y -= velocity;
 
     push();
@@ -97,6 +97,11 @@ export class Cow {
     ellipse(this.x + 205, this.y + 250, 7, 13);
     pop();
   }
+}
+
+let cow = new Cow(0, 0);
+function draw() {
+  cow.draw();
 }
 
 // let cow1 = new Cow();
