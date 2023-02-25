@@ -2,12 +2,24 @@
 // background(0, 0, 0);
 
 export class ExtendLinesRight {
-  constructor(x, y, color) {
+  constructor(x, y, color, maxWidth) {
     this.x = x;
     this.y = y;
     this.color = color;
     this.width = 10;
     this.allowExtend = true;
+    this.maxWidth = maxWidth;
+  }
+
+  detectIntersection(ufoCoordinates) {
+    if (
+      ufoCoordinates.y > this.y &&
+      ufoCoordinates.y < this.y + this.height &&
+      this.x + this.width >= ufoCoordinates.x
+    ) {
+      return true;
+    }
+    return false;
   }
 
   draw(velocity) {
@@ -17,7 +29,7 @@ export class ExtendLinesRight {
     noStroke();
 
     //mechanics of extending and going back
-    if (this.width <= 200 && this.allowExtend === true) {
+    if (this.width <= this.maxWidth && this.allowExtend === true) {
       this.width = this.width + 5;
     } else {
       this.allowExtend = false;

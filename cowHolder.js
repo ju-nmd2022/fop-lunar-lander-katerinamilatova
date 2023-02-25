@@ -17,14 +17,12 @@ export class CowHolder {
   }
 
   detectIntersection(ufoCoordinates) {
-    print(ufoCoordinates.width);
     let lineDistance = this.rightLineX - this.leftLineX;
     if (
       ufoCoordinates.y > this.rightLineY &&
       ufoCoordinates.y < this.rightLineY + this.height &&
       lineDistance < ufoCoordinates.width
     ) {
-      print("dotkli seeee!!");
       return true;
     }
     return false;

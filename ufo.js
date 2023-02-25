@@ -8,9 +8,9 @@ export class Ufo {
   collisionInfo() {
     //this is how you get information about ufo
     return {
-      x: this.x,
+      x: 420,
       y: this.y + 100,
-      width: 150,
+      width: 120,
       height: 60,
     };
   }

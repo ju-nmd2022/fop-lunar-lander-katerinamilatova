@@ -5,7 +5,8 @@ function setup() {
 
 // Class of cows
 export class Cow {
-  constructor(x, y, cowHolder) {
+  constructor(game, x, y, cowHolder) {
+    this.game = game;
     this.name = this.generateName();
     this.points = 1;
     this.phrase = "You earned " + this.name + "!";
@@ -37,8 +38,17 @@ export class Cow {
 
   detectIntersection(ufoCoordinates) {
     if (ufoCoordinates.y > this.y && ufoCoordinates.y < this.y + this.height) {
+      // check the ufo velicity
+      if (this.game.ufoVelocity > 3 && this.visible) {
+        print("Game over");
+        return true;
+      }
+
+      this.game.score++;
+      print(this.game.score);
       this.cowHolder.unlock();
       this.visible = false;
+      return false;
     }
 
     // return false every time because cow does not stop the game

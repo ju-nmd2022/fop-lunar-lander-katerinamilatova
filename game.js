@@ -4,16 +4,18 @@ import { ExtendLinesRight } from "./extendLinesRight";
 import { ExtendLinesLeft } from "./extendLinesLeft";
 import { ObstacleOne } from "./rotatingLinesObstacle";
 import { Cow } from "./cow";
+import { scenery } from "./background";
 
 export class Game {
   // in constructor can be only the things that will change - not ufo (ufo will be in every game the same)
   constructor(playerName) {
     // set up constants
     this.ufoY = 0;
-    this.velocity = 8;
+    this.ufoVelocity = 8;
     this.acceleration = 0.2;
     this.obstacleVelocity = 2;
     this.endGame = false;
+    this.score = 0;
 
     this.playerName = playerName;
 
@@ -24,20 +26,22 @@ export class Game {
 
   //here are all my game objects
   setUp() {
-    let extendLineRight = new ExtendLinesRight(200, 600, "#004FFF");
-    let extendLineLeft = new ExtendLinesLeft(600, 600, "#004FFF");
-    let obstacleOne = new ObstacleOne(100, 900);
-    let cowHolder = new CowHolder(0, 490, 0, 490);
-    let cow = new Cow(330, 400, cowHolder);
+    let cowHolder = new CowHolder(0, 750, 0, 750);
+    let cow = new Cow(this, 330, 660, cowHolder);
     this.ufo = new Ufo(0.8);
 
     //this is how I push all my game objects to the array above
     this.gameObjects.push(
-      extendLineRight,
-      extendLineLeft,
-      obstacleOne,
+      new ExtendLinesRight(200, 500, "#FFFFFF", 200),
+      new ExtendLinesLeft(600, 500, "#FFFFFF", 200),
       cow,
-      cowHolder
+      cowHolder,
+      new ExtendLinesRight(200, 900, "#FFFFFF", 200),
+      new ExtendLinesLeft(600, 900, "#FFFFFF", 200),
+      new ExtendLinesRight(200, 1200, "#FFFFFF", 400),
+      new ExtendLinesLeft(600, 1300, "#FFFFFF", 400),
+      new ExtendLinesRight(200, 1500, "#FFFFFF", 400),
+      new ExtendLinesLeft(600, 1600, "#FFFFFF", 400)
     );
   }
 
@@ -46,10 +50,11 @@ export class Game {
     of the draw function in run.js to return from the function and end the game
   */
   run() {
+    scenery();
     //ocitovat - myslím že to je od Garrita
-    this.velocity = this.velocity + this.acceleration;
+    this.ufoVelocity = this.ufoVelocity + this.acceleration;
     if (mouseIsPressed) {
-      this.velocity = this.velocity - 0.8;
+      this.ufoVelocity = this.ufoVelocity - 0.8;
       this.ufo.FlyUp();
     }
 
@@ -77,7 +82,7 @@ export class Game {
 
     // draw ufo and move it
     this.ufo.draw(this.ufoY);
-    this.ufoY = this.ufoY + this.velocity;
+    this.ufoY = this.ufoY + this.ufoVelocity;
 
     // contidions to end the game
     if (this.ufoY <= -100 || this.ufoY >= 700 || this.endGame === true) {

@@ -31,7 +31,7 @@ export class ExtendLinesSpecialDiagonal {
   }
 }
 
-let rightLineOne = new ExtendLinesRight(300, 100, "#FF007F");
+let rightLineOne = new ExtendLinesRight(300, 100, "#000000");
 
 function draw() {
   clear();
