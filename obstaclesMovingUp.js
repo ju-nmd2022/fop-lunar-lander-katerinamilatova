@@ -1,6 +1,6 @@
 import { ExtendLinesLeft } from "./extendLines";
 import { ExtendLinesRight } from "./extendLines";
-import { ObstacleOne } from "./obstacleOne";
+import { ObstacleOne } from "./rotatingLinesObstacle";
 
 function setUp() {
   createCanvas(800, 800);

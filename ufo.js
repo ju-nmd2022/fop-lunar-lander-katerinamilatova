@@ -1,8 +1,18 @@
 export class Ufo {
   constructor(scaleFactor) {
-    this.x = 0;
+    this.x = 150;
     this.y = 0;
     this.scaleFactor = scaleFactor;
+  }
+
+  collisionInfo() {
+    //this is how you get information about ufo
+    return {
+      x: this.x,
+      y: this.y + 100,
+      width: 150,
+      height: 60,
+    };
   }
 
   draw(currentY) {

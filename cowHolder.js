@@ -7,6 +7,27 @@ export class CowHolder {
     this.leftLineY = leftLineY;
     this.rightLineX = rightLineX; //before 350
     this.rightLineY = rightLineY;
+    // locked locks the movement of cow holder
+    this.locked = true;
+    this.height = 20;
+  }
+
+  unlock() {
+    this.locked = false;
+  }
+
+  detectIntersection(ufoCoordinates) {
+    print(ufoCoordinates.width);
+    let lineDistance = this.rightLineX - this.leftLineX;
+    if (
+      ufoCoordinates.y > this.rightLineY &&
+      ufoCoordinates.y < this.rightLineY + this.height &&
+      lineDistance < ufoCoordinates.width
+    ) {
+      print("dotkli seeee!!");
+      return true;
+    }
+    return false;
   }
 
   draw(velocity) {
@@ -23,15 +44,18 @@ export class CowHolder {
     rect(this.rightLineX + 350 + 20, this.rightLineY, 80, 20, 10);
 
     if (mouseIsPressed) {
-      this.leftLineX -= 3;
-      this.rightLineX += 3;
+      if (this.locked === false) {
+        this.leftLineX -= 3;
+        this.rightLineX += 3;
+      }
     }
 
     if (this.leftLineY <= -300 && this.rightLineY <= -300) {
       this.leftLineY = 900;
       this.rightLineY = 900;
-      this.leftLineX = 50;
-      this.rightLineX = 50;
+      this.leftLineX = 0;
+      this.rightLineX = 0;
+      this.locked = true;
     }
   }
 }
