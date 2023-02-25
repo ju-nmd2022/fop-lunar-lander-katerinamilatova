@@ -45,35 +45,23 @@ export function scenery() {
     pop();
   }
 
-  upperCurve(0, 0);
+  upperCurve(0, -150);
   fill("#ABFF4F"); //green
-  upperCurve(-15, -10);
+  upperCurve(-15, -160);
   fill("#004FFF"); //blue
-  upperCurve(-25, -15);
+  upperCurve(-25, -165);
   fill("#FF007F"); //pink
-  upperCurve(-40, -30);
-
-  fill("#000026");
-  push();
-  rotate(0.4);
-  ellipse(470, -150, 350, 170);
-  pop();
-  // push();
-  // scale(0.7);
-  // rotate(0.2);
-  // upperCurve(170, -250);
-  // pop();
-
-  noStroke();
+  upperCurve(-40, -180);
 
   //small blue planet
+  noStroke();
   push();
   translate(-30, 150);
   fill("#004FFF");
   // fill("#008fff");
-  ellipse(200, 200, 100);
+  ellipse(170, 300, 100);
   push();
-  translate(40, -30);
+  translate(10, 70);
   rotate(0.2);
   fill(255, 255, 255);
   ellipse(200, 200, 160, 10);
@@ -84,6 +72,17 @@ export function scenery() {
   pop();
   pop();
 
+  //second small planet (turquis and pink)
+  fill("#00FEEF"); //green
+  ellipse(620, 530, 80);
+
+  push();
+  translate(0, 0);
+  rotate(-0.3);
+  fill("#FF007F"); //pink
+  ellipse(435, 690, 130, 12);
+  pop();
+
   //big green planet (left corner)
   fill("#ABFF4F"); //green
   ellipse(-200, 40, 700);
@@ -92,13 +91,21 @@ export function scenery() {
 
   //green balls
   fill("#ABFF4F"); //green
-  ellipse(570, 540, 20);
+  ellipse(730, 690, 20);
+  ellipse(740, 340, 35);
 
   //pink balls
+  fill("#FF007F"); //pink
+  ellipse(100, 700, 50);
 
   //turqois balls
   fill("#00FEEF");
   ellipse(610, 150, 25);
+  ellipse(150, 750, 15);
+
+  //darked blue balls
+  fill("#004FFF"); //blue
+  ellipse(770, 280, 17);
 
   //stars
   function star(x, y, scaleFactor) {
@@ -123,4 +130,5 @@ export function scenery() {
   star(200, 150, 0.5);
   star(1300, 480, 0.3);
   star(440, 800, 0.8);
+  star(-0, 900, 0.65);
 }

@@ -1,10 +1,9 @@
-import { Ufo } from "./ufo";
-import { CowHolder } from "./cowHolder";
-import { ExtendLinesRight } from "./extendLinesRight";
-import { ExtendLinesLeft } from "./extendLinesLeft";
-import { ObstacleOne } from "./rotatingLinesObstacle";
-import { Cow } from "./cow";
-import { scenery } from "./background";
+import { Ufo } from "./ufo.js";
+import { CowHolder } from "./cowHolder.js";
+import { ExtendLinesRight } from "./extendLinesRight.js";
+import { ExtendLinesLeft } from "./extendLinesLeft.js";
+import { Cow } from "./cow.js";
+import { scenery } from "./background.js";
 
 export class Game {
   // in constructor can be only the things that will change - not ufo (ufo will be in every game the same)
@@ -51,7 +50,7 @@ export class Game {
   */
   run() {
     scenery();
-    //ocitovat - myslím že to je od Garrita
+    // Lines which make ufo go up on click and move it were adapted from flappy ufo game created in the lesson
     this.ufoVelocity = this.ufoVelocity + this.acceleration;
     if (mouseIsPressed) {
       this.ufoVelocity = this.ufoVelocity - 0.8;
@@ -59,7 +58,7 @@ export class Game {
     }
 
     for (let i = 0; i < this.gameObjects.length; i++) {
-      /* OCITOVAT
+      /* 
       this is just safety check that the object has a defined method draw
       I am going through all children in a class and I am telling them to do HW 
       which is specified in the work book (everyone knows what to do - this is the method Draw) - 
