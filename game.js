@@ -25,7 +25,7 @@ export class Game {
 
   //here are all my game objects
   setUp() {
-    let cowHolder = new CowHolder(0, 750, 0, 750);
+    let cowHolder = new CowHolder(this, 0, 750, 0, 750);
     let cow = new Cow(this, 330, 660, cowHolder);
     this.ufo = new Ufo(0.8);
 
@@ -50,6 +50,7 @@ export class Game {
   */
   run() {
     scenery();
+
     // Lines which make ufo go up on click and move it were adapted from flappy ufo game created in the lesson
     this.ufoVelocity = this.ufoVelocity + this.acceleration;
     if (mouseIsPressed) {
@@ -83,8 +84,19 @@ export class Game {
     this.ufo.draw(this.ufoY);
     this.ufoY = this.ufoY + this.ufoVelocity;
 
+    // TADY VYKRESLIT HVĚZDYYYYY!!!
+
     // contidions to end the game
     if (this.ufoY <= -100 || this.ufoY >= 700 || this.endGame === true) {
+      if (this.score > 5 && this.score < 11) {
+        //One star
+      }
+      if (this.score > 10 && this.score < 16) {
+        //draw 2 stars
+      }
+      if (this.score > 15) {
+        //draw 3 stars
+      }
       print(this.ufoY);
       print("Game is over. " + this.playerName + " lost");
       return false;

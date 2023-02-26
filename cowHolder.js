@@ -2,7 +2,7 @@ createCanvas(800, 800);
 background(0, 0, 0);
 
 export class CowHolder {
-  constructor(leftLineX, leftLineY, rightLineX, rightLineY) {
+  constructor(game, leftLineX, leftLineY, rightLineX, rightLineY) {
     this.leftLineX = leftLineX; //before 350
     this.leftLineY = leftLineY;
     this.rightLineX = rightLineX; //before 350
@@ -10,10 +10,14 @@ export class CowHolder {
     // locked locks the movement of cow holder
     this.locked = true;
     this.height = 20;
+    this.game = game;
   }
 
   unlock() {
-    this.locked = false;
+    if (this.locked) {
+      this.locked = false;
+      this.game.score++;
+    }
   }
 
   detectIntersection(ufoCoordinates) {

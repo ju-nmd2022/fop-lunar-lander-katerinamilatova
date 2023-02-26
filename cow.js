@@ -44,8 +44,6 @@ export class Cow {
         return true;
       }
 
-      this.game.score++;
-      print(this.game.score);
       this.cowHolder.unlock();
       this.visible = false;
       return false;
