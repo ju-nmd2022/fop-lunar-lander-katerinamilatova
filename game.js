@@ -48,10 +48,12 @@ export class Game {
     Returns true if the game is allowed to continue or false when the game should be ended - it is the responsibility
     of the draw function in run.js to return from the function and end the game
   */
+
+  //The following lines were created in collaboration with Lukáš Toral
   run() {
     scenery();
 
-    // Lines which make ufo go up on click and move it were adapted from flappy ufo game created in the lesson
+    // Lines which make ufo go up on click and move it were adapted from flappy ufo game created in the lesson (plus all the intersection code in each of the files)
     this.ufoVelocity = this.ufoVelocity + this.acceleration;
     if (mouseIsPressed) {
       this.ufoVelocity = this.ufoVelocity - 0.8;
@@ -92,10 +94,8 @@ export class Game {
         //One star
       }
       if (this.score > 10 && this.score < 16) {
-        //draw 2 stars
       }
       if (this.score > 15) {
-        //draw 3 stars
       }
       print(this.ufoY);
       print("Game is over. " + this.playerName + " lost");

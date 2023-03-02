@@ -1,6 +1,8 @@
 function setup() {
   createCanvas(800, 800);
+  game = new Game("Kacenka");
 }
+window.setup = setup;
 
 // import { Game } from "./game";
 // import { firstScreen } from "./firstScreen";
@@ -9,7 +11,7 @@ import { firstScreen } from "./firstScreen.js";
 import { Game } from "./game.js";
 import { lastScreen } from "./lastScreen.js";
 
-let game = new Game("Kacenka");
+let game;
 let gameRunning = true;
 let screen = 0;
 
@@ -53,3 +55,5 @@ function draw() {
   // }
   // clear();
 }
+
+window.draw = draw;

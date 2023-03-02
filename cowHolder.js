@@ -1,5 +1,5 @@
-createCanvas(800, 800);
-background(0, 0, 0);
+// createCanvas(800, 800);
+// background(0, 0, 0);
 
 export class CowHolder {
   constructor(game, leftLineX, leftLineY, rightLineX, rightLineY) {

@@ -24,4 +24,4 @@ export function firstScreen() {
   // button.style("background-color", "#ABFF4F");
 }
 
-firstScreen();
+// firstScreen();

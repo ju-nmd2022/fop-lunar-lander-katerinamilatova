@@ -1,4 +1,4 @@
-createCanvas(800, 800);
+// createCanvas(800, 800);
 
 export function scenery() {
   background("#000026");

@@ -51,4 +51,4 @@ export function lastScreen() {
   star(520, 340);
 }
 
-lastScreen();
+// lastScreen();
