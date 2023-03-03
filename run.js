@@ -1,6 +1,7 @@
 function setup() {
   createCanvas(800, 800);
   game = new Game("Kacenka");
+  frameRate(30);
 }
 window.setup = setup;
 
@@ -14,6 +15,7 @@ import { lastScreen } from "./lastScreen.js";
 let game;
 let gameRunning = true;
 let screen = 0;
+let score = 0;
 
 function draw() {
   background(0, 0, 0);
@@ -27,12 +29,13 @@ function draw() {
       break;
     case 1:
       gameRunning = game.run();
-      if (gameRunning === false) {
+      if (gameRunning.gameOver === false) {
         screen = 2;
+        score = gameRunning.score;
       }
       break;
     case 2:
-      lastScreen();
+      lastScreen(score);
       return;
   }
 

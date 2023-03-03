@@ -13,7 +13,7 @@ export function firstScreen() {
 
   let rules =
     "The rules are easy." +
-    " Just collect as many cows as you can, but avoid all obstacles! Don't forget to control your speed.";
+    " Just collect as many cows as you can, but avoid all obstacles! Don't forget to control your speed, you don't want to smash the cows!";
   text(rules, 213, 400, 400, 200);
 
   // let button = createButton("START");

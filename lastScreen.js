@@ -1,6 +1,6 @@
 import { scenery } from "./background.js";
 
-export function lastScreen() {
+export function lastScreen(score) {
   scenery();
   textAlign(CENTER);
 
@@ -8,13 +8,13 @@ export function lastScreen() {
   textFont("Futura");
   fill(255, 255, 255);
   textSize(54);
-  text("GAME OVER", 400, 250);
+  text("GAME OVER", 400, 275);
 
   textFont("Avenir");
   textSize(20);
 
-  let rules = "You earned" + " X " + "cows." + " Good job!";
-  text(rules, 213, 430, 400, 200);
+  let rules = `You earned ${score} cows. Good job!`;
+  text(rules, 213, 450, 400, 200);
 
   // let button = createButton("PLAY AGAIN");
   // button.position(290, 570);
@@ -46,9 +46,9 @@ export function lastScreen() {
     endShape();
   }
 
-  star(280, 340);
-  star(400, 340);
-  star(520, 340);
+  star(280, 360);
+  star(400, 360);
+  star(520, 360);
 }
 
 // lastScreen();

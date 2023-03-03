@@ -90,16 +90,19 @@ export class Game {
 
     // contidions to end the game
     if (this.ufoY <= -100 || this.ufoY >= 700 || this.endGame === true) {
-      if (this.score > 5 && this.score < 11) {
-        //One star
-      }
-      if (this.score > 10 && this.score < 16) {
-      }
-      if (this.score > 15) {
-      }
+      // if (this.score > 5 && this.score < 11) {
+      //   //One star
+      // }
+      // if (this.score > 10 && this.score < 16) {
+      // }
+      // if (this.score > 15) {
+      // }
       print(this.ufoY);
       print("Game is over. " + this.playerName + " lost");
-      return false;
+      return {
+        gameOver: false,
+        score: this.score,
+      };
     }
 
     return true;
