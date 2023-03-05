@@ -38,7 +38,7 @@ export class Cow {
 
   detectIntersection(ufoCoordinates) {
     if (ufoCoordinates.y > this.y && ufoCoordinates.y < this.y + this.height) {
-      // check the ufo velicity
+      // check the ufo velicity (speed)
       if (this.game.ufoVelocity > 3 && this.visible) {
         print("Game over");
         return true;

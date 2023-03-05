@@ -7,6 +7,7 @@ export class ExtendLinesRight {
     this.y = y;
     this.color = color;
     this.width = 10;
+    this.height = 20;
     this.allowExtend = true;
     this.maxWidth = maxWidth;
   }
