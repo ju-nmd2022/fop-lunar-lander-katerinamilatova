@@ -15,13 +15,4 @@ export function firstScreen() {
     "The rules are easy." +
     " Just collect as many cows as you can, but avoid all obstacles! Don't forget to control your speed, you don't want to smash the cows!";
   text(rules, 213, 400, 400, 200);
-
-  // let button = createButton("START");
-  // button.position(325, 550);
-  // button.size(200, 100);
-  // button.style("font-family", "Futura");
-  // button.style("font-size", "40px");
-  // button.style("background-color", "#ABFF4F");
 }
-
-// firstScreen();

@@ -1,4 +1,22 @@
-// createCanvas(800, 800);
+//stars
+function star(x, y, scaleFactor) {
+  push();
+  scale(scaleFactor);
+  fill(255, 255, 255);
+  beginShape();
+  vertex(x + 200, y + 20);
+  vertex(x + 190, y + 40);
+  vertex(x + 200, y + 60);
+  vertex(x + 210, y + 40);
+  vertex(x + 200, y + 20);
+  endShape();
+
+  stroke(255, 255, 255);
+  strokeWeight(1.5);
+  line(x + 200, y + 15, x + 200, y + 65);
+  line(x + 185, y + 40, x + 215, y + 40);
+  pop();
+}
 
 export function scenery() {
   background("#000026");
@@ -87,8 +105,6 @@ export function scenery() {
   fill("#ABFF4F"); //green
   ellipse(-200, 40, 700);
 
-  //  "#004FFF"
-
   //green balls
   fill("#ABFF4F"); //green
   ellipse(730, 690, 20);
@@ -106,26 +122,6 @@ export function scenery() {
   //darked blue balls
   fill("#004FFF"); //blue
   ellipse(770, 280, 17);
-
-  //stars
-  function star(x, y, scaleFactor) {
-    push();
-    scale(scaleFactor);
-    fill(255, 255, 255);
-    beginShape();
-    vertex(x + 200, y + 20);
-    vertex(x + 190, y + 40);
-    vertex(x + 200, y + 60);
-    vertex(x + 210, y + 40);
-    vertex(x + 200, y + 20);
-    endShape();
-
-    stroke(255, 255, 255);
-    strokeWeight(1.5);
-    line(x + 200, y + 15, x + 200, y + 65);
-    line(x + 185, y + 40, x + 215, y + 40);
-    pop();
-  }
 
   star(200, 150, 0.5);
   star(1300, 480, 0.3);

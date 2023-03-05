@@ -5,9 +5,6 @@ function setup() {
 }
 window.setup = setup;
 
-// import { Game } from "./game";
-// import { firstScreen } from "./firstScreen";
-// import { lastScreen } from "./lastScreen";
 import { firstScreen } from "./firstScreen.js";
 import { Game } from "./game.js";
 import { lastScreen } from "./lastScreen.js";
@@ -38,25 +35,6 @@ function draw() {
       lastScreen(score);
       return;
   }
-
-  // if (screen == 0 && screenSwitch) {
-  //   print(screen);
-  //   firstScreen();
-  //   if (mouseIsPressed) {
-  //     screen += 1;
-  //     screenSwitch = false;
-  //     screenTwoSwitch = true;
-  //   }
-  // } else if (screen == 1 && screenTwoSwitch) {
-  //   //   drawObstacleOne(180, 0);
-  //   gameRunning = game.run();
-  // }
-
-  // if (gameRunning === false) {
-  //   lastScreen();
-  //   return;
-  // }
-  // clear();
 }
 
 window.draw = draw;

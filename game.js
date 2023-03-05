@@ -80,7 +80,6 @@ export class Game {
           this.ufo.collisionInfo()
         );
         if (objectCollision === true) {
-          // dotykaji se
           this.endGame = true;
         }
       }
@@ -89,8 +88,6 @@ export class Game {
     // draw ufo and move it
     this.ufo.draw(this.ufoY);
     this.ufoY = this.ufoY + this.ufoVelocity;
-
-    // TADY VYKRESLIT HVĚZDYYYYY!!!
 
     // contidions to end the game
     if (this.ufoY <= -100 || this.ufoY >= 700 || this.endGame === true) {

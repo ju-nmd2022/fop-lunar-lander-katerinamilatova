@@ -36,16 +36,6 @@ export function lastScreen(score) {
   let rules = `You earned ${score} cows. Good job!`;
   text(rules, 213, 450, 400, 200);
 
-  // let button = createButton("PLAY AGAIN");
-  // button.position(290, 570);
-  // button.size(280, 80);
-  // button.style("font-family", "Futura");
-  // button.style("font-size", "30px");
-  // button.style("background-color", "#ABFF4F");
-
-  let x = 250;
-  let y = 330;
-
   if (score > 0 && score <= 3) {
     star(280, 360);
   }
@@ -59,5 +49,3 @@ export function lastScreen(score) {
     star(520, 360);
   }
 }
-
-// lastScreen();

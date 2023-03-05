@@ -1,8 +1,3 @@
-function setup() {
-  createCanvas(800, 800);
-  background(0, 0, 0);
-}
-
 // Class of cows
 export class Cow {
   constructor(game, x, y, cowHolder) {
@@ -50,7 +45,7 @@ export class Cow {
     }
 
     // return false every time because cow does not stop the game
-    // it is not an obstacle I simply increase score
+    // it is not an obstacle, I simply increase score
     return false;
   }
 
