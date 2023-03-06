@@ -8,6 +8,17 @@ import { scenery } from "./background.js";
 export class Game {
   // in constructor can be only the things that will change - not ufo (ufo will be in every game the same)
   constructor(playerName) {
+    this.playerName = playerName;
+
+    //empty array for all my game obejcts
+    this.gameObjects = [];
+    this.setUp();
+  }
+
+  //here are all my game objects and all the game setting (which i can later call to restart it)
+  setUp() {
+    //this is here again so that the game can restart
+    this.gameObjects = [];
     // set up constants
     this.ufoY = 0;
     this.ufoVelocity = 8;
@@ -16,15 +27,6 @@ export class Game {
     this.endGame = false;
     this.score = 0;
 
-    this.playerName = playerName;
-
-    //empty array for all my game obejcts
-    this.gameObjects = [];
-    this.setUp();
-  }
-
-  //here are all my game objects
-  setUp() {
     let cowHolder = new CowHolder(this, 0, 750, 0, 750);
     let cow = new Cow(this, 330, 660, cowHolder);
     this.ufo = new Ufo(0.8);
@@ -50,12 +52,18 @@ export class Game {
   */
 
   //The following lines were created in collaboration with Lukáš Toral
+  restart() {
+    if (this.endGame == true) {
+      this.setUp();
+    }
+  }
+
   run() {
     scenery();
 
     // Lines which make ufo go up on click and move it were adapted from flappy ufo game created in the lesson (plus all the intersection code in each of the files)
     this.ufoVelocity = this.ufoVelocity + this.acceleration;
-    if (mouseIsPressed) {
+    if (mouseIsPressed || keyIsDown(32)) {
       this.ufoVelocity = this.ufoVelocity - 0.8;
       this.ufo.FlyUp();
     }
@@ -93,6 +101,8 @@ export class Game {
     if (this.ufoY <= -100 || this.ufoY >= 700 || this.endGame === true) {
       print(this.ufoY);
       print("Game is over. " + this.playerName + " lost");
+      // if I want to return 2 and more info, I need to do it by using object
+      //this is info I want to return when the game is over
       return {
         gameOver: false,
         score: this.score,

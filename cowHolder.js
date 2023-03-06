@@ -45,7 +45,7 @@ export class CowHolder {
     fill("#ABFF4F");
     rect(this.rightLineX + 350 + 20, this.rightLineY, 80, 20, 10);
 
-    if (mouseIsPressed) {
+    if (mouseIsPressed || keyIsDown(32)) {
       if (this.locked === false) {
         this.leftLineX -= 3;
         this.rightLineX += 3;

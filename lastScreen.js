@@ -20,7 +20,7 @@ function star(x, y) {
   endShape();
 }
 
-export function lastScreen(score) {
+export function lastScreen(score, screen) {
   scenery();
   textAlign(CENTER);
 
@@ -35,6 +35,8 @@ export function lastScreen(score) {
 
   let rules = `You earned ${score} cows. Good job!`;
   text(rules, 213, 450, 400, 200);
+
+  text("Click enter to play again!", 213, 500, 400, 200);
 
   if (score > 0 && score <= 3) {
     star(280, 360);

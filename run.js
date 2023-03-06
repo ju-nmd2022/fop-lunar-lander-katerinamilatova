@@ -17,10 +17,11 @@ let score = 0;
 function draw() {
   background(0, 0, 0);
   clear();
+
   switch (screen) {
     case 0:
       firstScreen();
-      if (mouseIsPressed) {
+      if (mouseIsPressed || keyIsDown(32)) {
         screen = 1;
       }
       break;
@@ -32,8 +33,14 @@ function draw() {
       }
       break;
     case 2:
-      lastScreen(score);
-      return;
+      //13 = enter
+      if (keyIsDown(13)) {
+        gameRunning.gameOver === true;
+        game.restart();
+        screen = 1;
+      } else {
+        lastScreen(score);
+      }
   }
 }
 
